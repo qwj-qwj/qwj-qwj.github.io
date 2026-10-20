@@ -145,25 +145,80 @@
   .proj-hero p strong{color:var(--txt)}
   @media(max-width:640px){.proj-hero{padding:24px}.proj-hero h3{font-size:22px}}
 
-  .shot{
-    border:1px solid var(--line-2);border-radius:12px;overflow:hidden;
-    background:#0a1020;margin-bottom:14px;box-shadow:0 20px 50px rgba(0,0,0,.4);
+  /* ===== 项目：两种 AI 模式说明条 ===== */
+  .mode-bar{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 26px;
   }
-  .shot img{width:100%}
-  .shot-cap{font-size:13px;color:var(--txt-3);margin-bottom:36px;padding-left:4px}
+  @media(max-width:680px){.mode-bar{grid-template-columns:1fr}}
+  .mode{
+    border-radius:12px;padding:18px 20px;border:1px solid var(--line);
+    background:var(--card);
+  }
+  .mode .m-tag{
+    display:inline-block;font-size:11.5px;letter-spacing:1.5px;font-weight:700;
+    padding:3px 10px;border-radius:4px;margin-bottom:10px;
+  }
+  .mode.read .m-tag{color:var(--blue);background:rgba(110,168,254,.12)}
+  .mode.click .m-tag{color:var(--accent);background:rgba(240,185,90,.12)}
+  .mode h4{font-size:16px;font-weight:700;margin-bottom:6px}
+  .mode p{font-size:13.5px;color:var(--txt-3);line-height:1.65}
 
-  /* 9模块网格 */
-  .mod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:30px 0 40px}
-  @media(max-width:820px){.mod-grid{grid-template-columns:repeat(2,1fr)}}
-  @media(max-width:520px){.mod-grid{grid-template-columns:1fr}}
-  .mod{
-    background:var(--card);border:1px solid var(--line);border-radius:10px;
-    padding:18px 18px 16px;transition:border-color .2s,transform .2s;
+  /* ===== 模块浏览器（左列表 + 右详情） ===== */
+  .explorer{
+    display:grid;grid-template-columns:300px 1fr;gap:18px;align-items:start;
+    margin:10px 0 10px;
   }
-  .mod:hover{border-color:var(--accent);transform:translateY(-2px)}
-  .mod .n{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:1px;margin-bottom:6px}
-  .mod .t{font-size:15px;font-weight:700;margin-bottom:6px}
-  .mod .d{font-size:13px;color:var(--txt-3);line-height:1.6}
+  @media(max-width:820px){.explorer{grid-template-columns:1fr}}
+  .mod-list{display:flex;flex-direction:column;gap:8px}
+  @media(max-width:820px){
+    .mod-list{flex-direction:row;overflow-x:auto;padding-bottom:8px}
+    .mod-btn{min-width:200px}
+  }
+  .mod-btn{
+    text-align:left;cursor:pointer;
+    background:var(--card);border:1px solid var(--line);border-radius:10px;
+    padding:12px 14px;transition:all .18s;color:var(--txt);font-family:inherit;
+  }
+  .mod-btn:hover{border-color:var(--line-2)}
+  .mod-btn.active{
+    background:var(--card-2);border-color:var(--accent);
+    box-shadow:0 0 0 1px var(--accent) inset;
+  }
+  .mod-btn .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .mod-btn .num{font-size:11px;color:var(--txt-3);font-weight:700;letter-spacing:1px}
+  .mod-btn.active .num{color:var(--accent)}
+  .mod-btn .name{font-size:14px;font-weight:700}
+  .mode-pill{
+    font-size:10.5px;padding:2px 8px;border-radius:100px;letter-spacing:.5px;white-space:nowrap;
+  }
+  .mode-pill.read{color:var(--blue);background:rgba(110,168,254,.12)}
+  .mode-pill.click{color:var(--accent);background:rgba(240,185,90,.12)}
+  .mode-pill.data{color:var(--txt-3);background:rgba(154,171,194,.1)}
+  .mode-pill.sys{color:var(--green);background:rgba(63,185,122,.12)}
+
+  .mod-detail{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:22px;min-height:300px;
+  }
+  .mod-detail .d-head{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .mod-detail .d-num{font-size:12px;color:var(--accent);font-weight:700;letter-spacing:2px}
+  .mod-detail h3{font-size:20px;font-weight:700}
+  .mod-detail .d-desc{color:var(--txt-2);font-size:14.5px;line-height:1.7;margin:10px 0 16px}
+  .mod-detail .d-desc strong{color:var(--txt)}
+  .mod-detail .shot{
+    border:1px solid var(--line-2);border-radius:10px;overflow:hidden;
+    background:#0a1020;box-shadow:0 14px 36px rgba(0,0,0,.4);
+  }
+  .mod-detail .shot img{width:100%}
+  .mod-detail .d-note{font-size:12.5px;color:var(--txt-3);margin-top:10px}
+
+  /* AI 执行现场 */
+  .stream-block{margin-top:36px}
+  .stream-shot{
+    border:1px solid var(--line-2);border-radius:12px;overflow:hidden;background:#0a1020;
+    box-shadow:0 20px 50px rgba(0,0,0,.4);margin-top:14px;
+  }
+  .stream-shot img{width:100%}
 
   /* 亮点 */
   .hl-title{font-size:18px;font-weight:700;margin:30px 0 18px}
@@ -312,27 +367,142 @@
       </p>
     </div>
 
-    <div class="reveal">
-      <div class="shot"><img src="assets/ui-top.png" alt="工作台上半屏：岗位录入、岗位库、简历评估与推荐"></div>
-      <div class="shot-cap">▲ 上半屏：岗位生成 / 录入 · 岗位库 · 简历评估与岗位推荐</div>
+    <!-- 两种 AI 工作模式说明 -->
+    <div class="mode-bar reveal">
+      <div class="mode read">
+        <span class="m-tag">AI · 读文件 / 分析</span>
+        <h4>AI 在本地读简历、读 JD、做判断</h4>
+        <p>不打开任何网站，纯文本推理：自动拆 JD 文件、批量匹配简历、按岗位打分分类。结果直接落 Excel。</p>
+      </div>
+      <div class="mode click">
+        <span class="m-tag">AI · 自动打开浏览器点击</span>
+        <h4>AI 亲自上脉脉 / BOSS / 猎聘 / 学术网站</h4>
+        <p>不抓后台接口，AI 像人一样慢速滚动、点卡片、读页面内容，再把候选人公开资料结构化导出。</p>
+      </div>
     </div>
 
-    <div class="reveal">
-      <div class="shot"><img src="assets/ui-bottom.png" alt="工作台下半屏：按岗位筛选简历、脉脉、BOSS、猎聘、论文作者检索"></div>
-      <div class="shot-cap">▲ 下半屏：按岗位筛选简历 · 脉脉 · BOSS · 猎聘 · 论文作者检索</div>
+    <!-- 模块浏览器 -->
+    <div class="explorer reveal">
+      <div class="mod-list" id="modList">
+        <button class="mod-btn active" data-id="overview"><div class="top"><span class="num">00</span><span class="mode-pill sys">系统</span></div><div class="name">工作台总览</div></button>
+        <button class="mod-btn" data-id="m01"><div class="top"><span class="num">01</span><span class="mode-pill read">AI 分析</span></div><div class="name">岗位生成 / 录入</div></button>
+        <button class="mod-btn" data-id="m02"><div class="top"><span class="num">02</span><span class="mode-pill data">数据管理</span></div><div class="name">岗位库</div></button>
+        <button class="mod-btn" data-id="m03"><div class="top"><span class="num">03</span><span class="mode-pill read">AI 分析</span></div><div class="name">简历自动匹配</div></button>
+        <button class="mod-btn" data-id="m04"><div class="top"><span class="num">04</span><span class="mode-pill read">AI 分析</span></div><div class="name">按岗位批量筛简历</div></button>
+        <button class="mod-btn" data-id="m05"><div class="top"><span class="num">05</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">脉脉 Excel 反查</div></button>
+        <button class="mod-btn" data-id="m06"><div class="top"><span class="num">06</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">脉脉关键词检索</div></button>
+        <button class="mod-btn" data-id="m07"><div class="top"><span class="num">07</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">BOSS 直聘搜索</div></button>
+        <button class="mod-btn" data-id="m08"><div class="top"><span class="num">08</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">猎聘关键词搜索</div></button>
+        <button class="mod-btn" data-id="m09"><div class="top"><span class="num">09</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">论文作者检索</div></button>
+        <button class="mod-btn" data-id="m10"><div class="top"><span class="num">10</span><span class="mode-pill click">AI 操作浏览器</span></div><div class="name">目标实验室人才检索</div></button>
+      </div>
+
+      <div class="mod-detail" id="modDetail">
+        <!-- 概览 -->
+        <div class="d-panel" data-panel="overview">
+          <div class="d-head"><span class="d-num">00</span><h3>工作台总览</h3><span class="mode-pill sys">系统</span></div>
+          <div class="d-desc">
+            顶部是「任务执行引擎」状态：<strong>SenseAudio S2 已就绪</strong>，招聘类任务默认走它；Codex 保留为 Skill 修改和备用引擎。两者通过隔离目录切换，互不污染本机登录态。右上角是模块导航抽屉，10 个模块一键跳转。
+          </div>
+          <div class="shot"><img src="assets/m-overview.png" alt="工作台总览：双引擎状态与模块导航"></div>
+          <div class="d-note">▲ 工作台顶部：双执行引擎状态、模块导航抽屉</div>
+        </div>
+
+        <!-- 01 -->
+        <div class="d-panel" data-panel="m01" hidden>
+          <div class="d-head"><span class="d-num">01</span><h3>岗位生成 / 录入</h3><span class="mode-pill read">AI 分析</span></div>
+          <div class="d-desc">
+            两条路径：A 是手动录入或上传 JD 文件（Excel / Word / PDF / TXT / Markdown / RTF），<strong>AI 自动识别其中的一个或多个岗位并结构化入库</strong>；B 是只填岗位名称和加分 / 排除方向，<strong>AI 反向生成可编辑的岗位介绍</strong>，满意后一键导出 JD Word 版。
+          </div>
+          <div class="shot"><img src="assets/m01-jd.png" alt="01 岗位生成与录入：A 手动录入 / B 反向生成"></div>
+          <div class="d-note">▲ 01 岗位生成 / 录入：左侧手动录入 + JD 文件导入，右侧 AI 反向生成岗位介绍</div>
+        </div>
+
+        <!-- 02 -->
+        <div class="d-panel" data-panel="m02" hidden>
+          <div class="d-head"><span class="d-num">02</span><h3>岗位库</h3><span class="mode-pill data">数据管理</span></div>
+          <div class="d-desc">
+            所有已录入岗位本地持久化，支持<strong>折叠 / 展开、编辑回填、开放 / 关闭（关闭后不参与自动匹配）、删除</strong>。截图中已沉淀 32 个开放岗位。岗位名和 JD 内容已按合规要求打码。
+          </div>
+          <div class="shot"><img src="assets/m02-jobs.png" alt="02 岗位库：已打码的岗位列表"></div>
+          <div class="d-note">▲ 02 岗位库：开放中状态、修改 / 关闭 / 删除操作</div>
+        </div>
+
+        <!-- 03 -->
+        <div class="d-panel" data-panel="m03" hidden>
+          <div class="d-head"><span class="d-num">03</span><h3>简历自动匹配岗位</h3><span class="mode-pill read">AI 分析</span></div>
+          <div class="d-desc">
+            批量上传技术岗简历，AI 自动读取所有「开放中」的岗位，对每份简历做最佳匹配，输出<strong>最佳匹配岗位、匹配分数、匹配理由、其他可能岗位</strong>。超过 3 份自动拆成每批 3 份的串行任务。
+          </div>
+          <div class="shot"><img src="assets/m03-04-resume.png" alt="03 简历自动匹配 与 04 按岗位筛选简历"></div>
+          <div class="d-note">▲ 03 简历自动匹配（上）/ 04 按岗位批量筛选（下）</div>
+        </div>
+
+        <!-- 04 -->
+        <div class="d-panel" data-panel="m04" hidden>
+          <div class="d-head"><span class="d-num">04</span><h3>按岗位批量筛选简历</h3><span class="mode-pill read">AI 分析</span></div>
+          <div class="d-desc">
+            从岗位库选一个开放岗位（或手动填方向），批量上传简历做定向筛选。AI 按岗位完整 JD 输出<strong>推荐 / 待定 / 不推荐三档</strong>，附带岗位适配性评分，最终导出 Excel + Markdown 报告。
+          </div>
+        </div>
+
+        <!-- 05-08 共享平台截图 -->
+        <div class="d-panel" data-panel="m05" hidden>
+          <div class="d-head"><span class="d-num">05</span><h3>脉脉 Excel 检索更新</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            上传已有候选人 Excel，AI <strong>自动打开脉脉</strong>、按姓名列逐个反查，补全年龄、地点、脉脉个人页链接。多个 Excel 严格串行、不并行，避免同一浏览器账号被多任务同时驱动。
+          </div>
+        </div>
+        <div class="d-panel" data-panel="m06" hidden>
+          <div class="d-head"><span class="d-num">06</span><h3>脉脉关键词检索</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            用 DSL 风格语法描述搜索范围，例如「字节跳动 / 飞书｜商业化 / 销售 / 企业服务｜总经理 / 负责人 / VP / 总监」，AI 在脉脉上<strong>自动拆成可验收的串行检索计划</strong>，按动态停止条件执行，全部单元完成后统一去重导出 Excel。
+          </div>
+        </div>
+        <div class="d-panel" data-panel="m07" hidden>
+          <div class="d-head"><span class="d-num">07</span><h3>BOSS 直聘关键词搜索</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            AI 在 BOSS 推荐牛人页面<strong>慢速读取卡片</strong>（不抓后台接口），按筛选规则（如「阿里 / 通义 / 算法；华为 / 盘古 / 算法」）筛人，可选收藏命中者，最后导出 Excel。刻意慢速滚动是为了不触发风控。
+          </div>
+        </div>
+        <div class="d-panel" data-panel="m08" hidden>
+          <div class="d-head"><span class="d-num">08</span><h3>猎聘关键词搜索</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            按关键词（如「字节 销售总经理」）+ 资格规则 + 目标人数，AI <strong>自动打开猎聘</strong>检索候选人。每次只跑一个关键词、不并行、安全限流。
+          </div>
+          <div class="shot"><img src="assets/m05-08-platforms.png" alt="05-08 脉脉与 BOSS、猎聘平台检索模块"></div>
+          <div class="d-note">▲ 05 脉脉 Excel / 06 脉脉关键词 / 07 BOSS / 08 猎聘</div>
+        </div>
+
+        <!-- 09 -->
+        <div class="d-panel" data-panel="m09" hidden>
+          <div class="d-head"><span class="d-num">09</span><h3>论文作者检索</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            面向大模型实验室人才调研。两种模式：<strong>链接锚定</strong>（给论文 / 主页 URL，AI 逐层核验真实作者身份）和<strong>发现模式</strong>（给公司 / 模型名如「字节 Seed」「腾讯混元」，AI 自动在 Scholar / DBLP / OpenReview 上发现论文和作者）。未公开字段一律写「公开信息有限」。
+          </div>
+          <div class="shot"><img src="assets/m09-paper.png" alt="09 论文作者检索 与 10 目标实验室人才检索"></div>
+          <div class="d-note">▲ 09 论文作者检索（上）/ 10 目标实验室人才检索（下）</div>
+        </div>
+
+        <!-- 10 -->
+        <div class="d-panel" data-panel="m10" hidden>
+          <div class="d-head"><span class="d-num">10</span><h3>目标实验室人才检索</h3><span class="mode-pill click">AI 操作浏览器</span></div>
+          <div class="d-desc">
+            直接给实验室官网（如 jifengdai.org）和成员栏目名（Students / Members / People），AI <strong>自动读官网成员页</strong>，逐个核验公开主页、履历、论文、联系方式和岗位适配信息，输出可点击 Excel。同名无法核实时不写入候选链接。
+          </div>
+          <div class="shot"><img src="assets/m10-lab.png" alt="10 目标实验室人才检索"></div>
+          <div class="d-note">▲ 10 目标实验室人才检索：输入实验室 URL 和成员栏目</div>
+        </div>
+      </div>
     </div>
 
-    <div class="hl-title reveal">九大业务模块</div>
-    <div class="mod-grid reveal">
-      <div class="mod"><div class="n">01</div><div class="t">岗位生成与录入</div><div class="d">手动录入或上传 JD 文件，由模型自动识别岗位并结构化入库；可反向生成岗位介绍。</div></div>
-      <div class="mod"><div class="n">02</div><div class="t">岗位库</div><div class="d">已录入岗位本地持久化，支持折叠、编辑、开放 / 关闭、删除。</div></div>
-      <div class="mod"><div class="n">03</div><div class="t">简历自动匹配</div><div class="d">批量上传简历，自动读取所有开放岗位，输出最佳匹配岗位、分数与理由。</div></div>
-      <div class="mod"><div class="n">04</div><div class="t">按岗位批量筛简历</div><div class="d">选一个岗位定向筛选，输出推荐 / 待定 / 不推荐三档与适配性评分。</div></div>
-      <div class="mod"><div class="n">05</div><div class="t">脉脉 Excel 反查</div><div class="d">按姓名列在脉脉反查，补全年龄、地点、个人页链接。</div></div>
-      <div class="mod"><div class="n">06</div><div class="t">脉脉关键词检索</div><div class="d">用 DSL 语法描述组织 / 角色 / 职级，后端自动拆成串行检索计划。</div></div>
-      <div class="mod"><div class="n">07</div><div class="t">BOSS 直聘搜索</div><div class="d">慢速读取推荐牛人卡片，按规则筛人、可选收藏、导出 Excel。</div></div>
-      <div class="mod"><div class="n">08</div><div class="t">猎聘关键词搜索</div><div class="d">按关键词 + 资格规则 + 目标人数检索，单关键词安全限流。</div></div>
-      <div class="mod"><div class="n">09</div><div class="t">论文作者检索</div><div class="d">面向大模型实验室人才调研，链接锚定或按公司 / 模型名发现作者。</div></div>
+    <!-- AI 执行现场 -->
+    <div class="stream-block reveal">
+      <div class="hl-title" style="margin-top:40px">AI 执行现场 · 它真的在跑</div>
+      <p style="color:var(--txt-2);font-size:14.5px;max-width:760px;line-height:1.7">
+        下图是一次脉脉关键词检索任务的实时执行流：上面是 AI 写出来的<strong>每一步推理日志</strong>（「检索单元 q006 已提交给 Codex 等待返回」「q005 已验收，总进度 5/8，自动继续下一项」），中间是搜索计划进度条，下面是<strong>人工介入输入框</strong>——遇到登录、验证码时，人只需要点一下「已登录，继续」，AI 就接着跑。
+      </p>
+      <div class="stream-shot"><img src="assets/task-stream.png" alt="任务实时执行流：AI 日志、进度条、人工介入"></div>
     </div>
 
     <div class="hl-title reveal">关键技术设计</div>
@@ -374,6 +544,20 @@
     });
   },{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // 模块浏览器：左侧按钮切换右侧面板
+  const btns = document.querySelectorAll('.mod-btn');
+  const panels = document.querySelectorAll('.d-panel');
+  btns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id = btn.dataset.id;
+      btns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      panels.forEach(p=>{
+        p.hidden = (p.dataset.panel !== id);
+      });
+    });
+  });
 </script>
 
 </body>
